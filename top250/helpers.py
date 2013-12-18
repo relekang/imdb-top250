@@ -9,7 +9,10 @@ imdb = Imdb()
 
 @cache.cached(60*60*24)
 def get_top250():
-    return imdb.top_250()
+    top_list = imdb.top_250()
+    for i in xrange(len(top_list)):
+        top_list[i]['rank'] = i + 1
+    return top_list
 
 
 def get_user_ratings(user_id):

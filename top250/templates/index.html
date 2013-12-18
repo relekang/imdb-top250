@@ -39,12 +39,14 @@
       <div class="row">
         <table class="table table-bordered table-hover">
           <tr>
+            <th class="text-center">#</th>
             <th>Title</th>
             <th>Rating</th>
             <th>Year</th>
             <th>Links</th>
           </tr>
           <tr data-ng-repeat="movie in movies">
+            <td class="text-center">{{movie.rank}}</td>
             <td>{{movie.title}}</td>
             <td>{{movie.rating}}</td>
             <td>{{movie.year}}</td>
