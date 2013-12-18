@@ -17,7 +17,7 @@ app.controller('listViewController', ['$scope', function ($scope) {
 
   $scope.fetchMovieList = function (user_id) {
     $scope.updating = true;
-    $.getJSON('/' + user_id, function (data) {
+    $.getJSON('/api/' + user_id, function (data) {
       $scope.movies = data.todo; 
       $scope.updating = false;
       $scope.safeApply();

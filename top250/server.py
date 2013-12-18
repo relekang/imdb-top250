@@ -15,7 +15,7 @@ def index():
     return render_template('index.jinja2')
 
 
-@app.route('/<user_id>')
+@app.route('/api/<user_id>')
 def todo(user_id):
     from top250.helpers import filter_top250
     todo = filter_top250(user_id)
@@ -24,7 +24,7 @@ def todo(user_id):
     })
 
 
-@app.route('/<user_id>.txt')
+@app.route('/api/<user_id>.txt')
 def todo_txt(user_id):
     from top250.helpers import filter_top250
     todo = filter_top250(user_id)
