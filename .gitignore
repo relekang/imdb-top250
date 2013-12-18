@@ -1,2 +1,8 @@
 *.py[co]
 venv/
+
+top250/static/main.css
+top250/imdbtop250.js
+top250/imdbtop250.min.js
+top250/frontend/node_modules
+top250/templates/index.jinja2

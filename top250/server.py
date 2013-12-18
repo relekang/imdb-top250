@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask.ext.cache import Cache
 
 from top250.utils import get_app_config, json_response, txt_response
@@ -6,6 +6,13 @@ from top250.utils import get_app_config, json_response, txt_response
 app = Flask(__name__)
 app.config.update(get_app_config())
 cache = Cache(app)
+
+
+@app.route('/')
+def index():
+    if app.config['DEBUG']:
+        return render_template('index.html')
+    return render_template('index.jinja2')
 
 
 @app.route('/<user_id>')

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-ng-app="imdbTop250">
+  <head>
+    <title>IMDB Top 250</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- build:style main -->
+       <link href="/static/main.less" type="text/css" rel="stylesheet/less"/>
+       <script src="/static/libs/less-1.4.1.min.js"></script>
+    <!--/build-->
+  </head>
+  <body data-ng-controller="listViewController">
+  {% raw %}
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">IMDB Top 250</a>
+        </div>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" data-ng-model="user_id" placeholder="IMDB user id">
+          </div>
+          <button class="btn btn-info" data-ng-click="fetchMovieList(user_id)">Fetch</button>
+        </form>
+      </div>
+    </nav>
+    <div data-ng-if="updating==true" class="lead text-center"> 
+      Updating...
+    </div>
+    <div data-ng-if="movies" class="container">
+      <div class="row">
+        <div class="lead text-center"> 
+          <ng-pluralize count="movies.length" offset=2
+                        when="{'0': 'Wow, you have watched them all!',
+                               '1': 'You have 1 movie to watch.',
+                               'other': 'You have {{movies.length}} movies to watch.'}">
+          </ng-pluralize>
+        </div>
+      </div>
+      <div class="row">
+        <table class="table table-bordered">
+          <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Year</th>
+          </tr>
+          <tr data-ng-repeat="movie in movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.rating}}</td>
+            <td>{{movie.year}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script src="/static/imdbtop250.min.js"></script>
+    {% endraw %}
+  </body>
+</html>
