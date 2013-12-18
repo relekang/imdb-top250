@@ -10,14 +10,14 @@ module.exports = function (grunt) {
       },
       dist: {
         src: [
-          'libs/jquery.min.js',
-          'libs/bootstrap.min.js',
-          'libs/angular.min.js',
-          'libs/moment.js',
-          'src/app.js',
-          'src/controllers/listViewController.js'
+          'frontend/libs/jquery.min.js',
+          'frontend/libs/bootstrap.min.js',
+          'frontend/libs/angular.min.js',
+          'frontend/libs/moment.js',
+          'frontend/src/app.js',
+          'frontend/src/controllers/listViewController.js'
         ],
-        dest: '../static/<%= pkg.name %>.js'
+        dest: 'top250/static/<%= pkg.name %>.js'
       }
     },
     uglify: {
@@ -27,21 +27,21 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          '../static/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'top250/static/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
     },
     less: {
       all: {
         files: {
-          "../static/main.css": "../static/main.less",
+          "top250/static/main.css": "top250/static/main.less",
         }
       }
     },
     htmlbuild: {
       dist: {
-        src: '../templates/index.html',
-        dest: '../templates/index.jinja2',
+        src: 'top250/templates/index.html',
+        dest: 'top250/templates/index.jinja2',
         options: {
           styles: {
             main: ['dist/main.css'] 
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
       }
     },
     jshint: {
-      src: ["src/**/*.js"]
+      src: ["frontend/src/**/*.js"]
     },
     watch: {
       files: ['<%= concat.dist.src %>'],
