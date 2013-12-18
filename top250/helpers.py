@@ -40,7 +40,7 @@ def get_user_ratings(user_id):
     return ratings
 
 
-@cache.memoize(60*30)
+@cache.memoize(60*2)
 def filter_top250(user_id):
     user_ratings = get_user_ratings(user_id)
     filtered_list = []
