@@ -42,11 +42,13 @@
             <th>Title</th>
             <th>Rating</th>
             <th>Year</th>
+            <th>Links</th>
           </tr>
           <tr data-ng-repeat="movie in movies">
             <td>{{movie.title}}</td>
             <td>{{movie.rating}}</td>
             <td>{{movie.year}}</td>
+            <td><a href="http://imdb.com/title/{{movie.tconst}}">IMDB</a>
           </tr>
         </table>
       </div>
