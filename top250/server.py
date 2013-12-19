@@ -10,9 +10,10 @@ cache = Cache(app)
 
 @app.route('/')
 def index():
+    analytics_code = app.config['ANALYTICS_CODE']
     if app.config['DEBUG']:
-        return render_template('index.html')
-    return render_template('index.jinja2')
+        return render_template('index.html', analytics_code=analytics_code)
+    return render_template('index.jinja2', analytics_code=analytics_code)
 
 
 @app.route('/api/<user_id>')

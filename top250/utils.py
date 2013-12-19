@@ -17,7 +17,7 @@ def txt_response(data, status=200):
 
 
 def get_app_config():
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser.ConfigParser(allow_no_value=True)
     config.read(['defaults.cfg', 'local.cfg'])
     app_config = {}
 
