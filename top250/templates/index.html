@@ -10,21 +10,18 @@
   </head>
   <body data-ng-controller="listViewController">
   {% raw %}
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">IMDB Top 250</a>
-        </div>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" data-ng-model="user_id" placeholder="IMDB user id">
-          </div>
-          <button class="btn btn-info" data-ng-click="fetchMovieList(user_id)">Fetch</button>
-        </form>
-      </div>
-    </nav>
+    <h1 class="text-center">IMDB top 250</h1>
     <div data-ng-if="updating==true" class="lead text-center"> 
       Updating...
+    </div>
+    <div data-ng-if="!movies" class="container">
+      <div class="row">
+        <p id="about" class="lead">
+            Hi, enter your IMDB ID below and I will fetch your list.
+            Your ID should be on the form <em>ur00000000</em>. You can find it in the url
+            on your profile page. Using usernames are in the making and will soon be available.
+        </p>
+      </div>
     </div>
     <div data-ng-if="movies" class="container">
       <div class="row">
@@ -55,7 +52,19 @@
         </table>
       </div>
     </div>
-    <script src="/static/imdbtop250.min.js"></script>
     {% endraw %}
+    <nav class="navbar navbar-fixed-bottom" role="navigation">
+        <form class="navbar-form text-center">
+          <div class="form-group">
+            <input type="text" class="form-control" data-ng-model="user_id" placeholder="IMDB user id">
+          </div>
+          <button class="btn btn-info" data-ng-click="fetchMovieList(user_id)">Fetch</button>
+        </form>
+      </div>
+    </nav>
+    
+    <a href="https://github.com/relekang/imdb-top250"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    
+    <script src="/static/imdbtop250.min.js"></script>
   </body>
 </html>

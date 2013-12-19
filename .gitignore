@@ -3,6 +3,6 @@ venv/
 node_modules/
 
 top250/static/main.css
-top250/imdbtop250.js
-top250/imdbtop250.min.js
+top250/static/imdbtop250.js
+top250/static/imdbtop250.min.js
 top250/templates/index.jinja2
