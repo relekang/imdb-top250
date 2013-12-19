@@ -10,46 +10,49 @@
   </head>
   <body data-ng-controller="listViewController">
   {% raw %}
-    <h1 class="text-center">IMDB top 250</h1>
-    <div data-ng-if="updating==true" class="lead text-center"> 
-      Updating...
-    </div>
-    <div data-ng-if="!movies" class="container">
-      <div class="row">
-        <p id="about" class="lead">
-            Hi, enter your IMDB ID below and I will fetch your list.
-            Your ID should be on the form <em>ur00000000</em>. You can find it in the url
-            on your profile page. Using usernames are in the making and will soon be available.
-        </p>
+    <div class="container">
+      <h1 class="text-center">IMDB top 250</h1>
+      <div id="alerts"></div>
+      <div data-ng-if="updating==true" class="lead text-center"> 
+        Updating...
       </div>
-    </div>
-    <div data-ng-if="movies" class="container">
-      <div class="row">
-        <div class="lead text-center"> 
-          <ng-pluralize count="movies.length" offset=2
-                        when="{'0': 'Wow, you have watched them all!',
-                               '1': 'You have 1 movie to watch.',
-                               'other': 'You have {{movies.length}} movies to watch.'}">
-          </ng-pluralize>
+      <div data-ng-if="!movies">
+        <div class="row">
+          <p id="about" class="lead">
+              Hi, enter your IMDB ID below and I will fetch your list.
+              Your ID should be on the form <em>ur00000000</em>. You can find it in the url
+              on your profile page. Using usernames are in the making and will soon be available.
+          </p>
         </div>
       </div>
-      <div class="row">
-        <table class="table table-bordered table-hover">
-          <tr>
-            <th class="text-center">#</th>
-            <th>Title</th>
-            <th>Rating</th>
-            <th>Year</th>
-            <th>Links</th>
-          </tr>
-          <tr data-ng-repeat="movie in movies">
-            <td class="text-center">{{movie.rank}}</td>
-            <td>{{movie.title}}</td>
-            <td>{{movie.rating}}</td>
-            <td>{{movie.year}}</td>
-            <td><a href="http://imdb.com/title/{{movie.tconst}}">IMDB</a>
-          </tr>
-        </table>
+      <div data-ng-if="movies">
+        <div class="row">
+          <div class="lead text-center"> 
+            <ng-pluralize count="movies.length" offset=2
+                          when="{'0': 'Wow, you have watched them all!',
+                                 '1': 'You have 1 movie to watch.',
+                                 'other': 'You have {{movies.length}} movies to watch.'}">
+            </ng-pluralize>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-bordered table-hover">
+            <tr>
+              <th class="text-center">#</th>
+              <th>Title</th>
+              <th>Rating</th>
+              <th>Year</th>
+              <th>Links</th>
+            </tr>
+            <tr data-ng-repeat="movie in movies">
+              <td class="text-center">{{movie.rank}}</td>
+              <td>{{movie.title}}</td>
+              <td>{{movie.rating}}</td>
+              <td>{{movie.year}}</td>
+              <td><a href="http://imdb.com/title/{{movie.tconst}}">IMDB</a>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
     {% endraw %}
