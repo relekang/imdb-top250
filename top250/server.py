@@ -9,6 +9,7 @@ cache = Cache(app)
 
 
 @app.route('/')
+@cache.cached(60*30)
 def index():
     analytics_code = app.config['ANALYTICS_CODE']
     if app.config['DEBUG']:
