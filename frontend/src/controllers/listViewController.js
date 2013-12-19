@@ -30,7 +30,7 @@ app.controller('listViewController', ['$scope', function ($scope) {
     $('#alerts').html('');
     $scope.updating = true;
     if (!$scope.check_user_id(user_id)) {
-      $scope.addMessage('warning', 'The entered user_id is not valid. The whole list will be fetched');
+      $scope.addMessage('warning', 'The entered user id is not valid. The whole list will be fetched');
     }
     $.getJSON('/api/' + user_id, function (data) {
       $scope.movies = data.todo; 
