@@ -31,7 +31,10 @@ app.controller('listViewController', ['$scope', function ($scope) {
     $scope.updating = true;
     if (!$scope.check_user_id(user_id)) {
       $scope.addMessage('warning', 'The entered user id is not valid. The whole list will be fetched');
+    } else {
+      localStorage.setItem('imdb_user_id', user_id);
     }
+
     $.getJSON('/api/' + user_id, function (data) {
       $scope.movies = data.todo; 
       $scope.updating = false;
@@ -39,5 +42,12 @@ app.controller('listViewController', ['$scope', function ($scope) {
     });
   };
 
+  if (supports_local_storage()) {
+    var user_id = localStorage.getItem('imdb_user_id');
+    if (user_id) {
+      $scope.user_id = user_id;
+      $scope.fetchMovieList(user_id);
+    }
+  }
 
 }]);

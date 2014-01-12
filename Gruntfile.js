@@ -15,6 +15,7 @@ module.exports = function (grunt) {
           'frontend/libs/angular.min.js',
           'frontend/libs/moment.js',
           'frontend/src/app.js',
+          'frontend/src/utils.js',
           'frontend/src/controllers/listViewController.js'
         ],
         dest: 'top250/static/<%= pkg.name %>.js'
